@@ -1,4 +1,4 @@
-package com.employeeManagement.demo.controller;
+package com.employeeManagement.demo.exception;
 
 import org.json.JSONObject;
 import org.springframework.boot.web.servlet.error.ErrorController;
