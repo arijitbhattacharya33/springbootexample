@@ -1,7 +1,14 @@
 package com.employeeManagement.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employee_details")
 public class Employee {
 
+	@Id
 	private String employeeId;
 	private String name;
 	private String address;
