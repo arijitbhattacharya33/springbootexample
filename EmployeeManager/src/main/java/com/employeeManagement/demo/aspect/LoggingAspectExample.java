@@ -123,4 +123,20 @@ public class LoggingAspectExample {
 
 		return returnValue;
 	}
+	
+	@Around("@annotation(com.employeeManagement.demo.aspect.MyLoggable)")
+	public Object aroundAdviceWithCustomAnnotation(ProceedingJoinPoint proceedingJoinPoint) {
+		Object returnValue = null;
+		try {
+			log.info("Around -Before: ");
+			returnValue = proceedingJoinPoint.proceed();
+			log.info("Around -After : ");
+		} catch (Throwable e) {
+			log.error("Around - After Throwing : " + e.getMessage());
+			e.printStackTrace();
+		}
+		log.info("After Returning : ");
+
+		return returnValue;
+	}
 }

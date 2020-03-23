@@ -47,29 +47,46 @@ public class EmployeeControllerLoggingAspect {
 
 	}
 
-	@AfterReturning(pointcut = "args(name)", returning = "returnObject")
+	@AfterReturning(pointcut = "applyAllMethodsOfEmployeeController()", returning = "returnObject")
 	public void afterReturningAdvice(String name, List<Employee> returnObject) {
-		log.info("After Returning : "+returnObject.toString());
+		log.info("After Returning : " + returnObject.toString());
 	}
 
-	@AfterThrowing(pointcut = "args(name)", throwing = "ex")
-	public void afterThrowingAdvice(String name, RuntimeException ex) {
+	@AfterThrowing(pointcut = "applyAllMethodsOfEmployeeController()", throwing = "ex")
+	public void afterThrowingAdvice(RuntimeException ex) {
 
-		log.error("After Throwing : "+ ex.getMessage());
+		log.info("After Throwing : " + ex.getMessage());
+		log.error("After Throwing : " + ex.getMessage());
 	}
 
-	@Around("allTheGetters()")
+	@Around("applyAllMethodsOfEmployeeController()")
 	public Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
 		Object returnValue = null;
 		try {
-			System.out.println("before advice.");
+			log.info("Around -Before: ");
 			returnValue = proceedingJoinPoint.proceed();
-			System.out.println("after returning.");
+			log.info("Around -After : ");
 		} catch (Throwable e) {
-			System.out.println("after throwing.");
+			log.error("Around - After Throwing : " + e.getMessage());
 			e.printStackTrace();
 		}
-		System.out.println("after finally.");
+		log.info("After Returning : ");
+
+		return returnValue;
+	}
+	
+	@Around("@annotation(com.employeeManagement.demo.aspect.MyLoggable)")
+	public Object aroundAdviceWithCustomAnnotation(ProceedingJoinPoint proceedingJoinPoint) {
+		Object returnValue = null;
+		try {
+			log.info("Around -Before: with custom annotation");
+			returnValue = proceedingJoinPoint.proceed();
+			log.info("Around -After : with custom annotation");
+		} catch (Throwable e) {
+			log.error("Around - After Throwing : with custom annotation" + e.getMessage());
+			e.printStackTrace();
+		}
+		log.info("After Returning : with custom annotation");
 
 		return returnValue;
 	}

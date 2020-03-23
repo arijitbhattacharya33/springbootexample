@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.employeeManagement.demo.aspect.MyLoggable;
 import com.employeeManagement.demo.model.Employee;
 import com.employeeManagement.demo.service.EmployeeService;
 
@@ -23,6 +24,7 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/employees", method = RequestMethod.GET, produces = "application/json")
 	@ApiOperation(value="Retrive all the employees", notes = "This api returns all the employees of the company.", response = List.class)
+	@MyLoggable
 	public ResponseEntity<List<Employee>> getAllEmployees(){
 		
 		List<Employee> employeeList = null; //employeeService.getAllEmployees();		
