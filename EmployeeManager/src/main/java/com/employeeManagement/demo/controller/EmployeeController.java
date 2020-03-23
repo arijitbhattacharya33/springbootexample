@@ -1,6 +1,5 @@
 package com.employeeManagement.demo.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,7 @@ public class EmployeeController {
 	@ApiOperation(value="Retrive all the employees", notes = "This api returns all the employees of the company.", response = List.class)
 	public ResponseEntity<List<Employee>> getAllEmployees(){
 		
-		List<Employee> employeeList = new ArrayList<Employee>();
-		
+		List<Employee> employeeList = null; //employeeService.getAllEmployees();		
 		return new ResponseEntity<List<Employee>>(employeeList, HttpStatus.OK);
 	}
 }

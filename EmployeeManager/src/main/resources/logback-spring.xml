@@ -87,7 +87,7 @@
 	</appender>
 	<appender name="errorLog"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${APP_LOG_ROOT}/database.log</file>
+		<file>${APP_LOG_ROOT}/error.log</file>
 		<encoder>
 			<pattern>${LOG_PATTERN}</pattern>
 		</encoder>

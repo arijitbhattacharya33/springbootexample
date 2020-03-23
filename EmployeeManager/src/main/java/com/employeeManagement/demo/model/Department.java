@@ -27,7 +27,7 @@ public class Department {
 	@Column(name = "dept_information")
 	private String deptInformation;
 
-	@OneToOne(mappedBy = "department_details")
+	@OneToOne(mappedBy = "department")
 	private Employee employee;
 
 	public String getDeptId() {
