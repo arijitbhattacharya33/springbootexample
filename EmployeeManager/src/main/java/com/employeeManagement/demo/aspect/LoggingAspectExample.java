@@ -1,4 +1,4 @@
-package com.employeeManagement.demo.controller.aspect;
+package com.employeeManagement.demo.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -9,12 +9,30 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Aspect
-@Component
-public class LoggingAspectExample {
+/*
+Examples of cross-cutting concerns:
+Logging
+Security
+Transaction management
+Auditing,
+Caching
+Internationalization
+Error detection and correction
+Memory management
+Performance monitoring
+Synchronization
+ 
+*/
 
+//@Aspect
+//@Component
+public class LoggingAspectExample {
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
 	// pointcut will apply for all methods starts with get and having zero or more
 	// args
 	@Pointcut("execution(* * * get*(..))") // wildcard
