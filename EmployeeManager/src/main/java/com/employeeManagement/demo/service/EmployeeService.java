@@ -1,8 +1,11 @@
 package com.employeeManagement.demo.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
+import com.employeeManagement.demo.model.Employee;
+
+
 public interface EmployeeService {
 
+	public List<Employee> getAllEmployees();
 }

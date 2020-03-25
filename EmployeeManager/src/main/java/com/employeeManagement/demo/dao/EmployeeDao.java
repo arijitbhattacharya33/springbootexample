@@ -1,8 +1,10 @@
 package com.employeeManagement.demo.dao;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
+import com.employeeManagement.demo.model.Employee;
+
 public interface EmployeeDao {
 
+	public List<Employee> getAllEmployees();
 }
