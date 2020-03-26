@@ -27,7 +27,16 @@ public class EmployeeController {
 	@MyLoggable
 	public ResponseEntity<List<Employee>> getAllEmployees(){
 		
-		List<Employee> employeeList = null; //employeeService.getAllEmployees();		
+		List<Employee> employeeList = employeeService.getAllEmployees();		
+		return new ResponseEntity<List<Employee>>(employeeList, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/departments", method = RequestMethod.GET, produces = "application/json")
+	@ApiOperation(value="Retrive all the employees", notes = "This api returns all the employees of the company.", response = List.class)
+	@MyLoggable
+	public ResponseEntity<List<Employee>> getAllDepartments(){
+		
+		List<Employee> employeeList = employeeService.getAllEmployees();		
 		return new ResponseEntity<List<Employee>>(employeeList, HttpStatus.OK);
 	}
 }

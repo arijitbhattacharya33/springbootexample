@@ -27,7 +27,7 @@ public class EmployeeControllerLoggingAspect {
 	public void applyAllMethodsOfEmployeeController() {
 	}
 
-	@Before("execution(within(com.employeeManagement.demo.controller.EmployeeController))")
+	@Before("execution(* com.employeeManagement.demo.controller.EmployeeController.*(..))")
 	public void beforeAdvice(JoinPoint joinPoint) {
 
 		// get the method name on which advice performed
@@ -36,8 +36,7 @@ public class EmployeeControllerLoggingAspect {
 		log.info("Before Advice:: " + methodDetails);
 
 		// getTarget() gives us the object of whos method was called and that method
-		// triggered the advice.
-		joinPoint.getTarget();
+		// triggered the advice. joinPoint.getTarget();
 	}
 
 	@After("applyAllMethodsOfEmployeeController()")
@@ -48,7 +47,7 @@ public class EmployeeControllerLoggingAspect {
 	}
 
 	@AfterReturning(pointcut = "applyAllMethodsOfEmployeeController()", returning = "returnObject")
-	public void afterReturningAdvice(String name, List<Employee> returnObject) {
+	public void afterReturningAdvice(List<Employee> returnObject) {
 		log.info("After Returning : " + returnObject.toString());
 	}
 
@@ -74,7 +73,7 @@ public class EmployeeControllerLoggingAspect {
 
 		return returnValue;
 	}
-	
+
 	@Around("@annotation(com.employeeManagement.demo.aspect.MyLoggable)")
 	public Object aroundAdviceWithCustomAnnotation(ProceedingJoinPoint proceedingJoinPoint) {
 		Object returnValue = null;
@@ -90,4 +89,5 @@ public class EmployeeControllerLoggingAspect {
 
 		return returnValue;
 	}
+
 }

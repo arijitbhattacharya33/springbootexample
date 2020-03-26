@@ -1,10 +1,17 @@
 package com.employeeManagement.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -27,8 +34,9 @@ public class Department {
 	@Column(name = "dept_information")
 	private String deptInformation;
 
-	@OneToOne(mappedBy = "department")
-	private Employee employee;
+	//@Transient
+	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+	private List<Employee> employee;
 
 	public String getDeptId() {
 		return deptId;
@@ -42,14 +50,6 @@ public class Department {
 		return deptName;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
@@ -61,4 +61,13 @@ public class Department {
 	public void setDeptInformation(String deptInformation) {
 		this.deptInformation = deptInformation;
 	}
+
+	@JsonBackReference
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
+	}	
 }

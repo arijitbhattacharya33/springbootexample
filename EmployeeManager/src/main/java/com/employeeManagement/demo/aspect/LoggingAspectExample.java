@@ -31,6 +31,7 @@ Synchronization
 //@Aspect
 //@Component
 public class LoggingAspectExample {
+	/*
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	// pointcut will apply for all methods starts with get and having zero or more
@@ -139,4 +140,6 @@ public class LoggingAspectExample {
 
 		return returnValue;
 	}
+	
+	*/
 }
