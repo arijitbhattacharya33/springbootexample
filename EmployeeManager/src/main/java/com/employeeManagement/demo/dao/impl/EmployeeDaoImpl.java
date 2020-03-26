@@ -20,7 +20,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Override
 	public List<Employee> getAllEmployees() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Employee>  employeeList = session.createQuery("from Employee").list();
+		List<Employee>  employeeList = session.createQuery("from Department").list();
 		return employeeList;
 	}
 

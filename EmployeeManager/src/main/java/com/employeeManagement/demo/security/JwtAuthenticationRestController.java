@@ -25,7 +25,7 @@ import com.employeeManagement.demo.security.jwt.JwtTokenUtil;
 import com.employeeManagement.demo.security.jwt.JwtUserDetails;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:8085")
 public class JwtAuthenticationRestController {
 
 	@Value("${jwt.http.request.header}")

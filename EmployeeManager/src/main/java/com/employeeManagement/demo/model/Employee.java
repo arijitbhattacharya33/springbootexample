@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -81,6 +83,7 @@ public class Employee {
 		this.pincode = pincode;
 	}
 
+	@JsonManagedReference
 	public Department getDepartment() {
 		return department;
 	}
